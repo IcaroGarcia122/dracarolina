@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { PlumHighlights } from './components/PlumHighlights';
@@ -8,44 +8,17 @@ import { AboutDoctor } from './components/AboutDoctor';
 import { FaqSection } from './components/FaqSection';
 import { FinalCta } from './components/FinalCta';
 import { Footer } from './components/Footer';
-import { BookingModal } from './components/BookingModal';
 import { AboutModal } from './components/AboutModal';
-import { ConfigModal } from './components/ConfigModal';
+import { BookingModal } from './components/BookingModal';
 import { BookingConfig, DEFAULT_BOOKING_CONFIG } from './types';
 
-const STORAGE_KEY = 'carolina_zampronha_config_v1';
-
 export default function App() {
-  const [config, setConfig] = useState<BookingConfig>(DEFAULT_BOOKING_CONFIG);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [config] = useState<BookingConfig>(DEFAULT_BOOKING_CONFIG);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isConfigOpen, setIsConfigOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
-  // Load config from localStorage
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        setConfig(JSON.parse(saved));
-      }
-    } catch {
-      // ignore
-    }
-  }, []);
-
-  const handleSaveConfig = (newConfig: BookingConfig) => {
-    setConfig(newConfig);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(newConfig));
-    } catch {
-      // ignore
-    }
-  };
-
+  // Opens the friendly mini form modal before redirecting to WhatsApp
   const handleOpenBooking = () => {
-    // If the user wants direct URL redirect without intermediate modal,
-    // we can either open the modal with options or go direct.
-    // Opening the modal allows modality selection and direct forward to WhatsApp.
     setIsBookingOpen(true);
   };
 
@@ -61,10 +34,9 @@ export default function App() {
       {/* 1. Header / Top Navigation */}
       <Header
         onOpenBooking={handleOpenBooking}
-        onOpenConfig={() => setIsConfigOpen(true)}
       />
 
-      {/* Main Page Flow mirroring template */}
+      {/* Main Page Flow */}
       <main className="flex-1">
         {/* 2. Hero Section */}
         <Hero
@@ -75,57 +47,46 @@ export default function App() {
         {/* 3. Faixa Ameixa (3 typographic columns, zero cards) */}
         <PlumHighlights />
 
-        {/* 4. Saúde Mental e Condições Psiquiátricas */}
+        {/* 4. Saúde Mental e Condições */}
         <MentalHealthSection onOpenBooking={handleOpenBooking} />
 
-        {/* 5. Sobre Carolina (Foto expandida, acolhimento e biografia) */}
+        {/* 5. Sobre Carolina */}
         <AboutDoctor
           onOpenAboutModal={() => setIsAboutOpen(true)}
         />
 
-        {/* 6. Como Funciona (Etapas em cards: Primeiro contato, Consulta, Acompanhamento) */}
+        {/* 6. Como Funciona */}
         <HowItWorks />
 
-        {/* 6. Dúvidas Frequentes (Interactive accordion) */}
+        {/* 7. Dúvidas Frequentes */}
         <FaqSection />
 
-        {/* 7. Chamada Final (Blush container, 'Vamos começar essa conversa?') */}
+        {/* 8. Chamada Final */}
         <FinalCta
           onOpenBooking={handleOpenBooking}
         />
       </main>
 
-      {/* 8. Rodapé (Footer) */}
+      {/* 9. Rodapé (Footer) */}
       <Footer
         config={config}
-        onOpenConfig={() => setIsConfigOpen(true)}
       />
 
-      {/* Modals & Dialogs */}
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={() => setIsBookingOpen(false)}
-        config={config}
-        onOpenConfig={() => {
-          setIsBookingOpen(false);
-          setIsConfigOpen(true);
-        }}
-      />
-
+      {/* About Modal */}
       <AboutModal
         isOpen={isAboutOpen}
         onClose={() => setIsAboutOpen(false)}
         onOpenBooking={() => {
           setIsAboutOpen(false);
-          setIsBookingOpen(true);
+          handleOpenBooking();
         }}
       />
 
-      <ConfigModal
-        isOpen={isConfigOpen}
-        onClose={() => setIsConfigOpen(false)}
+      {/* Booking Mini Form Modal */}
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
         config={config}
-        onSaveConfig={handleSaveConfig}
       />
     </div>
   );

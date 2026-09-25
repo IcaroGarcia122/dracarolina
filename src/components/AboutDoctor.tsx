@@ -66,7 +66,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenAboutModal }) =>
             {/* Body Copy: compact on mobile, spacious and comfortable on PC */}
             <div className="space-y-2 lg:space-y-4 font-sans text-xs sm:text-sm lg:text-base text-[#524146] font-normal leading-relaxed">
               <p>
-                Sou médica e psiquiatra, e acredito em um cuidado em saúde mental baseado na escuta, no respeito e na singularidade de cada pessoa.
+                Sou médica de família e comunidade (MFC), e acredito em um cuidado integral e em saúde mental baseado na escuta, no respeito e na singularidade de cada pessoa.
               </p>
               <p>
                 Ofereço um acompanhamento próximo e humanizado para construirmos, juntos, um caminho seguro para mais equilíbrio e qualidade de vida.

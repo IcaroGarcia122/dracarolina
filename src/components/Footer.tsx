@@ -1,13 +1,13 @@
 import React from 'react';
-import { Settings } from 'lucide-react';
 import { BookingConfig } from '../types';
+import logoImg from '../assets/images/logo.png';
 
 interface FooterProps {
   config: BookingConfig;
-  onOpenConfig: () => void;
+  onOpenConfig?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ config: _config, onOpenConfig }) => {
+export const Footer: React.FC<FooterProps> = ({ config }) => {
   const navLinks = [
     { label: 'Saúde Mental', href: '#saude-mental' },
     { label: 'Sobre', href: '#sobre' },
@@ -27,13 +27,21 @@ export const Footer: React.FC<FooterProps> = ({ config: _config, onOpenConfig })
     <footer className="bg-[#FAF7F4] border-t border-[#E8DFD9] pt-14 pb-12">
       <div className="max-w-6xl mx-auto px-6 sm:px-10">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10">
-          {/* Brand Identity - Exact match to template */}
+          {/* Brand Identity */}
           <div className="flex flex-col text-left">
-            <span className="font-serif text-2xl font-normal tracking-tight text-[#2E2225] leading-none">
-              Carolina Zampronha
-            </span>
-            <span className="font-sans text-[9px] tracking-[0.38em] uppercase text-[#7D6B70] mt-1.5 font-medium pl-0.5">
-              Psiquiatria
+            <img
+              src={logoImg}
+              alt="Dra. Carolina Zampronha"
+              className="h-12 sm:h-14 w-auto object-contain object-left mb-2"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (target.src !== window.location.origin + '/logo.png') {
+                  target.src = '/logo.png';
+                }
+              }}
+            />
+            <span className="font-sans text-[9px] tracking-[0.35em] uppercase text-[#7D6B70] font-medium pl-0.5">
+              Médica de Família • MFC
             </span>
           </div>
 
@@ -51,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ config: _config, onOpenConfig })
             ))}
           </nav>
 
-          {/* Right Signature Quote with fine vertical divider - Template match */}
+          {/* Right Signature Quote with fine vertical divider */}
           <div className="hidden md:flex items-center gap-5 border-l border-[#DFC8C2] pl-6 text-left">
             <p className="font-sans text-xs text-[#7D6B70] leading-relaxed max-w-[210px]">
               Cuidado em saúde mental<br />
@@ -60,22 +68,14 @@ export const Footer: React.FC<FooterProps> = ({ config: _config, onOpenConfig })
           </div>
         </div>
 
-        {/* Sub-footer regulatory / provisional note & quick config button */}
+        {/* Sub-footer regulatory note with doctor's credentials */}
         <div className="pt-8 border-t border-[#E8DFD9]/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7D6B70]/80">
           <p>
-            © {new Date().getFullYear()} Dra. Carolina Zampronha • Psiquiatra • Todos os direitos reservados.
+            © {new Date().getFullYear()} Dra. Carolina Zampronha • {config.crmInfo} • Todos os direitos reservados.
           </p>
-
-          <div className="flex items-center gap-4">
-            <button
-              onClick={onOpenConfig}
-              className="inline-flex items-center gap-1.5 text-xs text-[#B87986] hover:text-[#A36773] underline-offset-4 hover:underline transition-colors"
-              title="Configurar URL de agendamento e dados"
-            >
-              <Settings className="w-3.5 h-3.5" />
-              <span>Configurar link de agendamento</span>
-            </button>
-          </div>
+          <p className="text-[11px] text-[#7D6B70]/70">
+            Brasília - DF • Telemedicina em todo o Brasil
+          </p>
         </div>
       </div>
     </footer>

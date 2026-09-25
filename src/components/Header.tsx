@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, ArrowRight, Menu, X } from 'lucide-react';
+import logoImg from '../assets/images/logo.png';
 
 interface HeaderProps {
   onOpenBooking: () => void;
-  onOpenConfig: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenBooking, onOpenConfig: _onOpenConfig }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -51,30 +51,33 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, onOpenConfig: _on
       <div
         className={`transition-all duration-300 ${
           isScrolled
-            ? 'pointer-events-auto max-w-5xl mx-auto rounded-2xl sm:rounded-full bg-[#FAF7F4]/80 sm:bg-white/80 backdrop-blur-md border border-[#DFC8C2]/70 shadow-lg shadow-[#67434B]/6 px-5 sm:px-8 py-2.5 sm:py-3 flex items-center justify-between'
+            ? 'pointer-events-auto max-w-5xl mx-auto rounded-2xl sm:rounded-full bg-[#FAF7F4]/80 sm:bg-white/80 backdrop-blur-md border border-[#DFC8C2]/70 shadow-lg shadow-[#67434B]/6 px-5 sm:px-8 h-14 sm:h-16 flex items-center justify-between'
             : 'max-w-6xl mx-auto px-6 sm:px-10 h-22 sm:h-24 flex items-center justify-between'
         }`}
       >
         {/* Brand identity */}
         <a 
           href="#" 
-          className="flex flex-col group text-left focus:outline-none"
-          aria-label="Carolina Zampronha Psiquiatria - Início"
+          className="relative flex items-center group text-left focus:outline-none"
+          aria-label="Carolina Zampronha - Médica de Família (MFC)"
         >
-          <span
-            className={`font-serif tracking-tight text-[#2E2225] leading-none group-hover:text-[#B87986] transition-all duration-200 ${
-              isScrolled ? 'text-xl sm:text-2xl font-normal' : 'text-2xl sm:text-[27px] font-normal'
-            }`}
-          >
-            Carolina Zampronha
-          </span>
-          <span
-            className={`font-sans tracking-[0.35em] uppercase text-[#7D6B70] font-medium pl-0.5 transition-all duration-200 ${
-              isScrolled ? 'text-[8px] sm:text-[9px] mt-1' : 'text-[9px] sm:text-[10px] mt-1.5'
-            }`}
-          >
-            Psiquiatria
-          </span>
+          <div className="relative flex items-center overflow-visible">
+            <img
+              src={logoImg}
+              alt="Dra. Carolina Zampronha"
+              className={`w-auto object-contain transition-all duration-200 origin-left ${
+                isScrolled
+                  ? 'h-11 sm:h-13 scale-110 sm:scale-115'
+                  : 'h-16 sm:h-20 scale-115 sm:scale-125'
+              }`}
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (target.src !== window.location.origin + '/logo.png') {
+                  target.src = '/logo.png';
+                }
+              }}
+            />
+          </div>
         </a>
 
         {/* Desktop Navigation Links */}

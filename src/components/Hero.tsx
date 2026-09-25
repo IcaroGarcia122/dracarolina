@@ -78,25 +78,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExploreCare }) => {
             </h1>
 
             {/* Subtitle */}
-            <p className="font-sans text-lg sm:text-[20px] text-[#3D2C31] font-normal leading-relaxed mt-7 mb-6 max-w-xl">
+            <p className="font-sans text-lg sm:text-[20px] text-[#3D2C31] font-normal leading-relaxed mt-7 mb-8 max-w-xl">
               Cuidado em saúde mental com atenção à sua história e às suas necessidades.
             </p>
-
-            {/* Value highlight chips */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-8">
-              <span className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] text-[#523A41] bg-white/90 border border-[#DFC8C2] px-3 py-1.5 rounded-full font-medium shadow-2xs backdrop-blur-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B87986]" />
-                Atendimento Humanizado
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] text-[#523A41] bg-white/90 border border-[#DFC8C2] px-3 py-1.5 rounded-full font-medium shadow-2xs backdrop-blur-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B87986]" />
-                Consultas de 60 Minutos
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] text-[#523A41] bg-white/90 border border-[#DFC8C2] px-3 py-1.5 rounded-full font-medium shadow-2xs backdrop-blur-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#B87986]" />
-                Presencial & Telemedicina
-              </span>
-            </div>
           </div>
 
           {/* CTA Buttons */}

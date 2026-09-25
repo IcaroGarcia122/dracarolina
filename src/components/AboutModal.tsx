@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Heart, Shield, Sparkles, ArrowRight } from 'lucide-react';
-import insetImg from '../assets/images/carolina_about_inset_1790281605276.jpg';
+import insetImg from '../assets/images/493cfc2f-aaff-4dd0-87a0-d8cba751f397.png';
+import logoImg from '../assets/images/logo.png';
 
 interface AboutModalProps {
   isOpen: boolean;
@@ -38,14 +39,25 @@ export const AboutModal: React.FC<AboutModalProps> = ({
             />
           </div>
           <div>
+            <img
+              src={logoImg}
+              alt="Dra. Carolina Zampronha"
+              className="h-10 sm:h-12 w-auto object-contain mb-2 mx-auto sm:mx-0"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (target.src !== window.location.origin + '/logo.png') {
+                  target.src = '/logo.png';
+                }
+              }}
+            />
             <span className="font-sans text-[11px] font-semibold tracking-widest uppercase text-[#B87986] block mb-1">
               SOBRE A MÉDICA
             </span>
-            <h3 className="font-serif text-3xl sm:text-4xl font-normal text-[#2E2225] tracking-tight">
+            <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#2E2225] tracking-tight">
               Dra. Carolina Zampronha
             </h3>
             <p className="font-sans text-sm text-[#7D6B70] mt-1">
-              Médica Psiquiatra • Cuidado Integral em Saúde Mental
+              Médica de Família (MFC) • Cuidado Integral e Saúde Mental
             </p>
           </div>
         </div>
@@ -101,17 +113,19 @@ export const AboutModal: React.FC<AboutModalProps> = ({
           </div>
 
           <p>
-            Na prática psiquiátrica contemporânea, compreendemos que o sofrimento emocional não se resume a diagnósticos ou rótulos. O bem-estar psíquico resulta do equilíbrio entre aspectos biológicos, psicológicos e contextuais.
+            Na Medicina de Família e Comunidade, o cuidado é centrado na pessoa. Compreendemos que o sofrimento emocional e a saúde mental não se resumem a rótulos — o equilíbrio resulta da harmonia entre corpo, mente, história de vida e relações.
           </p>
 
-          {/* Provisional credentials box for physician review */}
-          <div className="mt-4 p-3.5 rounded-xl border border-dashed border-[#B87986]/50 bg-white/70 text-xs text-[#7D6B70] space-y-1">
-            <span className="font-semibold text-[#B87986] block">
-              Registro Profissional e Formação (Espaço para revisão médica):
+          {/* Official credentials box */}
+          <div className="mt-4 p-4 rounded-xl bg-[#FAF7F4] border border-[#DFC8C2]/70 text-xs sm:text-sm text-[#524146] space-y-1">
+            <span className="font-semibold text-[#8C4E5B] block text-xs tracking-wider uppercase">
+              Registro Profissional
             </span>
-            <p>
-              • CRM e RQE correspondentes ao estado de atuação da médica.<br />
-              • Dados acadêmicos e titulações disponíveis para inclusão conforme orientações éticas do Conselho Federal de Medicina (CFM).
+            <p className="font-medium text-[#2E2225]">
+              Médica de Família (MFC) | RQE 25334 | CRM 29767 DF
+            </p>
+            <p className="text-xs text-[#7D6B70]">
+              Atendimento médico humanizado, com consultas presenciais em Brasília - DF e telemedicina para todo o Brasil.
             </p>
           </div>
         </div>
