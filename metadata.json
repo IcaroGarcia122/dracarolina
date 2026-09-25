@@ -1,0 +1,6 @@
+{
+  "name": "Carolina Zampronha | Psiquiatria",
+  "description": "Landing page oficial da Dra. Carolina Zampronha, psiquiatra. Cuidado em saúde mental com atenção à sua história e às suas necessidades.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
