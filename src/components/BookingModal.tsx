@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { X, Calendar, MessageCircle, MapPin, Video, ArrowRight, ShieldCheck } from 'lucide-react';
+import { X, MessageCircle, Video, ArrowRight, ShieldCheck, Clock, CheckCircle2, Globe, Languages } from 'lucide-react';
 import { BookingConfig } from '../types';
-import logoImg from '../assets/images/logo.png';
+import { BrandLogo } from './BrandLogo';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -14,10 +14,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   onClose,
   config,
 }) => {
-  const [modality, setModality] = useState<'online' | 'presencial'>('online');
   const [patientName, setPatientName] = useState('');
   const [patientPhone, setPatientPhone] = useState('');
   const [patientPeriod, setPatientPeriod] = useState('Indiferente');
+  const [patientLanguage, setPatientLanguage] = useState<'pt' | 'en'>('pt');
 
   if (!isOpen) return null;
 
@@ -25,19 +25,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     e.preventDefault();
 
     let message = '';
+    const langNote = patientLanguage === 'en' ? ' [Consulta em inglês / English consultation]' : '';
+
     if (patientName.trim()) {
       message = `Olá, Dra. Carolina e equipe! Me chamo ${patientName.trim()}${
         patientPhone.trim() ? ` (${patientPhone.trim()})` : ''
-      }. Gostaria de solicitar agendamento para consulta ${
-        modality === 'online' ? 'Online (Telemedicina)' : 'Presencial'
-      }${patientPeriod !== 'Indiferente' ? ` no período da ${patientPeriod.toLowerCase()}` : ''}.`;
+      }. Gostaria de solicitar agendamento para consulta médica online em saúde mental (particular, para adulto)${
+        patientPeriod !== 'Indiferente' ? ` no período da ${patientPeriod.toLowerCase()}` : ''
+      }${langNote}.`;
     } else {
-      message = `Olá, Dra. Carolina! Gostaria de informações sobre agendamento de consulta ${
-        modality === 'online' ? 'Online (Telemedicina)' : 'Presencial'
-      }${patientPeriod !== 'Indiferente' ? ` no período da ${patientPeriod.toLowerCase()}` : ''}.`;
+      message = `Olá, Dra. Carolina! Gostaria de informações sobre agendamento de consulta médica online em saúde mental (particular, para adulto)${
+        patientPeriod !== 'Indiferente' ? ` no período da ${patientPeriod.toLowerCase()}` : ''
+      }${langNote}.`;
     }
 
-    const whatsappUrl = `https://wa.me/5561985920414?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${config.whatsappRaw}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     onClose();
   };
@@ -56,95 +58,53 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
         {/* Modal Header */}
         <div className="text-left mb-6">
-          <img
-            src={logoImg}
-            alt="Dra. Carolina Zampronha"
-            className="h-10 sm:h-11 w-auto object-contain mb-3"
-            onError={(e) => {
-              const target = e.currentTarget;
-              if (target.src !== window.location.origin + '/logo.png') {
-                target.src = '/logo.png';
-              }
-            }}
-          />
+          <div className="mb-3">
+            <BrandLogo variant="modal" />
+          </div>
           <div className="flex items-center gap-2 mb-2">
             <span className="font-sans text-[11px] font-semibold tracking-wider uppercase text-[#B87986]">
               Agendamento de Consulta
             </span>
           </div>
           <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#2E2225] tracking-tight">
-            Como prefere seu atendimento?
+            Solicitar atendimento
           </h3>
           <p className="font-sans text-xs sm:text-sm text-[#7D6B70] mt-1.5 leading-relaxed">
-            Preencha seus dados para iniciarmos o contato no WhatsApp da Dra. Carolina Zampronha.
+            Preencha seus dados para direcionarmos seu contato ao WhatsApp profissional da Dra. Carolina ({config.whatsappNumber}).
           </p>
         </div>
 
-        {/* Modality Selector */}
-        <div className="grid grid-cols-2 gap-3 mb-6">
-          <button
-            type="button"
-            onClick={() => setModality('online')}
-            className={`p-4 rounded-2xl border text-left transition-all flex flex-col justify-between gap-3 cursor-pointer ${
-              modality === 'online'
-                ? 'border-[#B87986] bg-[#DFC8C2]/25 shadow-xs'
-                : 'border-[#E8DFD9] bg-white hover:border-[#DFC8C2]'
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <Video
-                className={`w-5 h-5 ${
-                  modality === 'online' ? 'text-[#B87986]' : 'text-[#7D6B70]'
-                }`}
-              />
-              {modality === 'online' && (
-                <span className="w-2 h-2 rounded-full bg-[#B87986]" />
-              )}
+        {/* Prominent Modality Banner */}
+        <div className="mb-6 p-4 rounded-2xl border border-[#B87986]/40 bg-[#DFC8C2]/25 text-left space-y-2">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#2E2225]">
+              <Video className="w-4 h-4 text-[#B87986]" />
+              <span>Atendimento Online • Adultos • Particular</span>
             </div>
-            <div>
-              <p className="font-sans text-sm font-medium text-[#2E2225]">
-                Online (Telemedicina)
-              </p>
-              <p className="font-sans text-xs text-[#7D6B70] mt-0.5">
-                Para todo o Brasil
-              </p>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setModality('presencial')}
-            className={`p-4 rounded-2xl border text-left transition-all flex flex-col justify-between gap-3 cursor-pointer ${
-              modality === 'presencial'
-                ? 'border-[#B87986] bg-[#DFC8C2]/25 shadow-xs'
-                : 'border-[#E8DFD9] bg-white hover:border-[#DFC8C2]'
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <MapPin
-                className={`w-5 h-5 ${
-                  modality === 'presencial' ? 'text-[#B87986]' : 'text-[#7D6B70]'
-                }`}
-              />
-              {modality === 'presencial' && (
-                <span className="w-2 h-2 rounded-full bg-[#B87986]" />
-              )}
-            </div>
-            <div>
-              <p className="font-sans text-sm font-medium text-[#2E2225]">
-                Presencial
-              </p>
-              <p className="font-sans text-xs text-[#7D6B70] mt-0.5">
-                Brasília - DF
-              </p>
-            </div>
-          </button>
+          </div>
+          <div className="space-y-1 text-xs text-[#524146] pl-6">
+            <p className="flex items-center gap-1.5">
+              <Globe className="w-3.5 h-3.5 text-[#B87986]" />
+              <span>Para pacientes em todo o Brasil e brasileiros no exterior</span>
+            </p>
+            <p className="flex items-center gap-1.5">
+              <Languages className="w-3.5 h-3.5 text-[#B87986]" />
+              <span>Consultas em português ou inglês (including foreign patients)</span>
+            </p>
+            <p className="flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-[#B87986]" />
+              <span>Duração de aproximadamente 30 a 60 minutos</span>
+            </p>
+            <p className="text-[11px] text-[#7D6B70] pt-1 italic">
+              * Atendimento exclusivamente particular (não realizamos convênios ou planos de saúde).
+            </p>
+          </div>
         </div>
 
         {/* Quick form for personalized message */}
-        <form onSubmit={handleConfirmBooking} className="space-y-4">
+        <form onSubmit={handleConfirmBooking} className="space-y-4 text-left">
           <div>
-            <label className="block font-sans text-xs font-medium text-[#423337] mb-1.5 text-left">
+            <label className="block font-sans text-xs font-medium text-[#423337] mb-1.5">
               Seu nome completo (opcional)
             </label>
             <input
@@ -158,33 +118,47 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block font-sans text-xs font-medium text-[#423337] mb-1.5 text-left">
+              <label className="block font-sans text-xs font-medium text-[#423337] mb-1.5">
                 WhatsApp de contato
               </label>
               <input
                 type="tel"
                 value={patientPhone}
                 onChange={(e) => setPatientPhone(e.target.value)}
-                placeholder="(61) 99999-9999"
+                placeholder="+55 (61) 99999-9999"
                 className="w-full px-4 py-2.5 rounded-xl border border-[#E8DFD9] bg-white text-sm text-[#2E2225] placeholder:text-[#7D6B70]/60 focus:outline-none focus:border-[#B87986] focus:ring-1 focus:ring-[#B87986]"
               />
             </div>
 
             <div>
-              <label className="block font-sans text-xs font-medium text-[#423337] mb-1.5 text-left">
-                Preferência de período
+              <label className="block font-sans text-xs font-medium text-[#423337] mb-1.5">
+                Idioma da consulta
               </label>
               <select
-                value={patientPeriod}
-                onChange={(e) => setPatientPeriod(e.target.value)}
+                value={patientLanguage}
+                onChange={(e) => setPatientLanguage(e.target.value as 'pt' | 'en')}
                 className="w-full px-4 py-2.5 rounded-xl border border-[#E8DFD9] bg-white text-sm text-[#2E2225] focus:outline-none focus:border-[#B87986] focus:ring-1 focus:ring-[#B87986]"
               >
-                <option value="Indiferente">Qualquer horário</option>
-                <option value="Manhã">Manhã</option>
-                <option value="Tarde">Tarde</option>
-                <option value="Noite">Noite</option>
+                <option value="pt">Português</option>
+                <option value="en">English (Inglês)</option>
               </select>
             </div>
+          </div>
+
+          <div>
+            <label className="block font-sans text-xs font-medium text-[#423337] mb-1.5">
+              Preferência de período
+            </label>
+            <select
+              value={patientPeriod}
+              onChange={(e) => setPatientPeriod(e.target.value)}
+              className="w-full px-4 py-2.5 rounded-xl border border-[#E8DFD9] bg-white text-sm text-[#2E2225] focus:outline-none focus:border-[#B87986] focus:ring-1 focus:ring-[#B87986]"
+            >
+              <option value="Indiferente">Qualquer horário</option>
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+            </select>
           </div>
 
           <div className="pt-2">
@@ -200,13 +174,13 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         </form>
 
         {/* Footer info note */}
-        <div className="mt-6 pt-4 border-t border-[#E8DFD9]/60 flex items-center justify-between text-xs text-[#7D6B70]">
+        <div className="mt-6 pt-4 border-t border-[#E8DFD9]/60 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#7D6B70]">
           <span className="flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-[#B87986]" />
-            Atendimento ético e confidencial
+            Atendimento médico ético e confidencial
           </span>
-          <span className="text-[11px] text-[#7D6B70]/80">
-            WhatsApp: {config.whatsappNumber}
+          <span className="text-[11px] text-[#7D6B70]">
+            WhatsApp: <strong>{config.whatsappNumber}</strong>
           </span>
         </div>
       </div>

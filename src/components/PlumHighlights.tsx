@@ -13,7 +13,7 @@ export const PlumHighlights: React.FC = () => {
       icon: Clock,
       title: 'Cuidado\ncontínuo',
       description:
-        'Acompanhamento psiquiátrico planejado e individualizado, com foco em resultados e bem-estar.',
+        'Acompanhamento médico em saúde mental planejado e individualizado, com foco em resultados e bem-estar.',
     },
     {
       icon: Sparkles,

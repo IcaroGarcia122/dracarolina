@@ -1,4 +1,5 @@
 import React from 'react';
+import { Video, ShieldCheck, Globe, Languages } from 'lucide-react';
 
 export const HowItWorks: React.FC = () => {
   const steps = [
@@ -6,21 +7,21 @@ export const HowItWorks: React.FC = () => {
       num: '01',
       title: 'Primeiro contato',
       description:
-        'Você agenda sua consulta e dá o primeiro passo para uma vida com mais equilíbrio e bem-estar.',
+        'Você solicita o agendamento da sua consulta médica online pelo WhatsApp (+55 61 99953-3860), informando o período preferido e o idioma desejado (português ou inglês).',
       tag: 'ETAPA 01',
     },
     {
       num: '02',
-      title: 'Consulta',
+      title: 'Consulta médica online',
       description:
-        'Um encontro para entender a sua história, suas necessidades e definir, juntos, o melhor caminho.',
+        'Um encontro por telemedicina com duração de 30 a 60 minutos, para compreender a sua história, seus sintomas e definir a conduta médica individualizada.',
       tag: 'ETAPA 02',
     },
     {
       num: '03',
-      title: 'Acompanhamento',
+      title: 'Acompanhamento longitudinal',
       description:
-        'Um plano de cuidado contínuo, com atenção e ajustes sempre que necessário.',
+        'Reavaliação médica programada em cerca de 30 dias e acompanhamento periódico, com suporte próximo e prescrições médicas conforme as diretrizes.',
       tag: 'ETAPA 03',
     },
   ];
@@ -32,7 +33,7 @@ export const HowItWorks: React.FC = () => {
       <div className="absolute bottom-10 right-10 w-[380px] h-[380px] bg-[#B87986]/12 rounded-full blur-[120px] pointer-events-none -z-0" />
 
       <div className="max-w-6xl mx-auto px-6 sm:px-10 relative z-10">
-        {/* Section Header: Kicker, Title & Opening Description */}
+        {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 text-left">
           <div className="flex items-center gap-3.5 mb-5">
             <span className="font-sans text-[11px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-[#B87986]">
@@ -46,11 +47,26 @@ export const HowItWorks: React.FC = () => {
           </h2>
 
           <p className="font-sans text-base sm:text-lg text-[#524146] font-normal leading-relaxed text-balance">
-            O tratamento é sempre individualizado, considerando a sua história, suas necessidades e seus objetivos, em um ambiente de escuta, respeito e acolhimento.
+            O tratamento é individualizado para adultos, considerando a história, necessidades e rotina de cada paciente, em um ambiente seguro de escuta, respeito e acolhimento.
           </p>
+
+          <div className="mt-5 flex flex-wrap items-center gap-2.5 text-xs sm:text-[13px] text-[#67434B]">
+            <span className="inline-flex items-center gap-1.5 bg-white/95 border border-[#DFC8C2] px-3.5 py-1.5 rounded-full font-medium shadow-2xs">
+              <Video className="w-3.5 h-3.5 text-[#B87986]" />
+              Online para adultos • Particular
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/95 border border-[#DFC8C2] px-3.5 py-1.5 rounded-full font-medium shadow-2xs">
+              <Globe className="w-3.5 h-3.5 text-[#B87986]" />
+              Brasil e exterior
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white/95 border border-[#DFC8C2] px-3.5 py-1.5 rounded-full font-medium shadow-2xs">
+              <Languages className="w-3.5 h-3.5 text-[#B87986]" />
+              Português & English
+            </span>
+          </div>
         </div>
 
-        {/* 3 Step Cards Grid (Clean cards, zero trail effect) */}
+        {/* 3 Step Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {steps.map((step, idx) => (
             <div
@@ -69,7 +85,7 @@ export const HowItWorks: React.FC = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-2xl sm:text-[26px] font-normal text-[#2E2225] mb-3 tracking-tight group-hover:text-[#8C4E5B] transition-colors">
+                <h3 className="font-serif text-2xl sm:text-[25px] font-normal text-[#2E2225] mb-3 tracking-tight group-hover:text-[#8C4E5B] transition-colors">
                   {step.title}
                 </h3>
 

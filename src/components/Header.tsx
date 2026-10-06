@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, ArrowRight, Menu, X } from 'lucide-react';
-import logoImg from '../assets/images/logo.png';
+import { Calendar, ArrowRight, Menu, X, ShieldCheck } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface HeaderProps {
   onOpenBooking: () => void;
@@ -51,37 +51,21 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
       <div
         className={`transition-all duration-300 ${
           isScrolled
-            ? 'pointer-events-auto max-w-5xl mx-auto rounded-2xl sm:rounded-full bg-[#FAF7F4]/80 sm:bg-white/80 backdrop-blur-md border border-[#DFC8C2]/70 shadow-lg shadow-[#67434B]/6 px-5 sm:px-8 h-14 sm:h-16 flex items-center justify-between'
-            : 'max-w-6xl mx-auto px-6 sm:px-10 h-22 sm:h-24 flex items-center justify-between'
+            ? 'pointer-events-auto max-w-5xl mx-auto rounded-2xl sm:rounded-full bg-[#FAF7F4]/90 sm:bg-white/90 backdrop-blur-md border border-[#DFC8C2]/70 shadow-lg shadow-[#67434B]/6 px-4 sm:px-7 h-14 sm:h-16 flex items-center justify-between'
+            : 'max-w-6xl mx-auto px-6 sm:px-10 h-20 sm:h-24 flex items-center justify-between'
         }`}
       >
         {/* Brand identity */}
         <a 
           href="#" 
           className="relative flex items-center group text-left focus:outline-none"
-          aria-label="Carolina Zampronha - Médica de Família (MFC)"
+          aria-label="Dra. Carolina Zampronha - Mente & Saúde"
         >
-          <div className="relative flex items-center overflow-visible">
-            <img
-              src={logoImg}
-              alt="Dra. Carolina Zampronha"
-              className={`w-auto object-contain transition-all duration-200 origin-left ${
-                isScrolled
-                  ? 'h-11 sm:h-13 scale-110 sm:scale-115'
-                  : 'h-16 sm:h-20 scale-115 sm:scale-125'
-              }`}
-              onError={(e) => {
-                const target = e.currentTarget;
-                if (target.src !== window.location.origin + '/logo.png') {
-                  target.src = '/logo.png';
-                }
-              }}
-            />
-          </div>
+          <BrandLogo isScrolled={isScrolled} variant="header" />
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-7 lg:gap-9" aria-label="Navegação principal">
+        <nav className="hidden md:flex items-center gap-7 lg:gap-8" aria-label="Navegação principal">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -94,8 +78,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
           ))}
         </nav>
 
-        {/* CTA Button */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Desktop CTA Button with modality badge */}
+        <div className="hidden sm:flex flex-col items-end gap-1">
           <button
             onClick={onOpenBooking}
             className={`group inline-flex items-center gap-2 bg-[#B87986] hover:bg-[#A36773] text-white rounded-full font-medium transition-all shadow-sm active:scale-[0.98] cursor-pointer ${
@@ -106,13 +90,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
             <span>Agendar consulta</span>
             <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white/80 group-hover:translate-x-0.5 transition-transform" />
           </button>
+          {!isScrolled && (
+            <span className="text-[10px] text-[#7D6B70] tracking-wide pr-1">
+              Online para adultos • Particular
+            </span>
+          )}
         </div>
 
         {/* Mobile Hamburger Button */}
         <div className="flex sm:hidden items-center gap-2">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-[#423337] hover:text-[#B87986] focus:outline-none"
+            className="p-1.5 text-[#423337] hover:text-[#B87986] focus:outline-none cursor-pointer"
             aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -123,32 +112,36 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
-          className={`pointer-events-auto sm:hidden bg-[#FAF7F4]/95 backdrop-blur-md border border-[#E8DFD9] shadow-lg rounded-2xl mx-4 mt-2 px-6 py-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200`}
+          className={`pointer-events-auto sm:hidden bg-[#FAF7F4]/98 backdrop-blur-md border border-[#E8DFD9] shadow-xl rounded-2xl mx-4 mt-2 px-6 py-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200`}
         >
-          <nav className="flex flex-col gap-2">
+          <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-[#423337] hover:text-[#B87986] py-2 border-b border-[#E8DFD9]/50"
+                className="text-sm font-medium text-[#423337] hover:text-[#B87986] py-2.5 border-b border-[#E8DFD9]/50"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col gap-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full justify-center flex items-center gap-2 bg-[#B87986] hover:bg-[#A36773] text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-sm transition-all"
+              className="w-full justify-center flex items-center gap-2 bg-[#B87986] hover:bg-[#A36773] text-white px-5 py-3 rounded-full text-sm font-medium shadow-sm transition-all"
             >
               <Calendar className="w-4 h-4" />
               <span>Agendar consulta</span>
               <ArrowRight className="w-4 h-4" />
             </button>
+            <div className="flex items-center justify-center gap-1.5 text-[11px] text-[#7D6B70]">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#B87986]" />
+              <span>Consulta online • Atendimento particular</span>
+            </div>
           </div>
         </div>
       )}
