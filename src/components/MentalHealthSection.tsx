@@ -1,19 +1,16 @@
 import React from 'react';
 import { 
   HeartPulse, 
-  SunMedium, 
   Activity, 
   Brain, 
   RotateCcw,
   ShieldAlert,
   Eye,
   UtensilsCrossed,
-  Compass,
   Moon, 
   Sparkles,
   ArrowRight, 
-  Calendar,
-  AlertCircle
+  Calendar
 } from 'lucide-react';
 import plantaImg from '../assets/images/planta.png';
 
@@ -27,20 +24,12 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       num: '01',
       icon: HeartPulse,
       tag: 'ACOLHIMENTO',
-      title: 'Transtornos de ansiedade',
+      title: 'Ansiedade e depressão',
       description:
-        'Preocupação excessiva, angústia persistente, crises de pânico, medos incapacitantes ou sensação contínua de tensão física e mental.',
+        'Preocupação excessiva, angústia, crises de pânico, desânimo, tristeza duradoura, perda de interesse nas atividades diárias e cansaço constante.',
     },
     {
       num: '02',
-      icon: SunMedium,
-      tag: 'CUIDADO',
-      title: 'Transtornos depressivos',
-      description:
-        'Tristeza duradoura, perda de interesse ou prazer nas atividades diárias, desânimo, lentificação e sensação de vazio ou cansaço constante.',
-    },
-    {
-      num: '03',
       icon: Activity,
       tag: 'EQUILÍBRIO',
       title: 'Transtorno afetivo bipolar',
@@ -48,7 +37,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
         'Oscilações expressivas de humor, energia e iniciativa, alternando episódios de exaltação ou agitação com períodos de depressão e abatimento.',
     },
     {
-      num: '04',
+      num: '03',
       icon: Brain,
       tag: 'FOCO & ROTINA',
       title: 'TDAH',
@@ -56,7 +45,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
         'Desafios contínuos com atenção, foco, desorganização, impulsividade e procrastinação que impactam a rotina profissional, acadêmica ou pessoal.',
     },
     {
-      num: '05',
+      num: '04',
       icon: RotateCcw,
       tag: 'MANEJO',
       title: 'Transtorno obsessivo-compulsivo (TOC)',
@@ -64,7 +53,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
         'Pensamentos intrusivos e repetitivos associados a rituais ou comportamentos executados na tentativa de aliviar o desconforto ou a angústia.',
     },
     {
-      num: '06',
+      num: '05',
       icon: ShieldAlert,
       tag: 'SEGURANÇA',
       title: 'Transtorno de estresse pós-traumático (TEPT)',
@@ -72,7 +61,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
         'Sofrimento psíquico intenso, memórias involuntárias, pesadelos e hipervigilância desencadeados após eventos traumáticos significativos.',
     },
     {
-      num: '07',
+      num: '06',
       icon: Eye,
       tag: 'SUPORTE CLÍNICO',
       title: 'Esquizofrenia e outros transtornos psicóticos',
@@ -80,7 +69,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
         'Alterações na percepção da realidade, pensamento desorganizado, ideias delirantes ou isolamento social que necessitam de estabilização contínua.',
     },
     {
-      num: '08',
+      num: '07',
       icon: UtensilsCrossed,
       tag: 'RELAÇÃO & CORPO',
       title: 'Transtornos alimentares',
@@ -88,17 +77,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
         'Relação conturbada com a comida, distorção da imagem corporal, compulsões ou restrições severas com impacto emocional e clínico.',
     },
     {
-      num: '09',
-      icon: Compass,
-      tag: 'ACOMPANHAMENTO',
-      title: 'Transtorno do espectro autista (TEA)',
-      description:
-        'Acompanhamento médico em saúde mental para adultos no espectro autista, com foco em regulação emocional, qualidade de vida e comorbidades.',
-      specialNotice:
-        'Realizo acompanhamento médico, porém não realizo avaliação com finalidade de emissão de laudo/relatório diagnóstico de TEA.',
-    },
-    {
-      num: '10',
+      num: '08',
       icon: Moon,
       tag: 'DESCANSO',
       title: 'Alterações do sono',
@@ -106,7 +85,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
         'Insônia inicial, despertares noturnos frequentes, sono não reparador ou sonolência excessiva diurna prejudicando o rendimento.',
     },
     {
-      num: '11',
+      num: '09',
       icon: Sparkles,
       tag: 'CUIDADO INTEGRAL',
       title: 'Outras demandas em saúde mental',
@@ -141,7 +120,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
           </p>
         </div>
 
-        {/* 11 Clean Cards Grid (Sub-informações/bullets removidas conforme solicitado) */}
+        {/* 9 Clean Cards Grid (3x3 grid, Ansiedade e Depressão unificados, TEA removido) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {conditions.map((card, idx) => {
             const Icon = card.icon;
@@ -175,14 +154,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
                   <p className="font-sans text-sm sm:text-[14.5px] text-[#524146] leading-relaxed mb-5">
                     {card.description}
                   </p>
-
-                  {/* Special Notice (e.g. for TEA as requested) */}
-                  {card.specialNotice && (
-                    <div className="mb-5 p-3 rounded-xl bg-[#FAF7F4] border border-[#DFC8C2] text-xs text-[#67434B] flex items-start gap-2 leading-relaxed">
-                      <AlertCircle className="w-4 h-4 text-[#B87986] shrink-0 mt-0.5" />
-                      <span className="font-medium">{card.specialNotice}</span>
-                    </div>
-                  )}
                 </div>
 
                 {/* Bottom Action Button */}
