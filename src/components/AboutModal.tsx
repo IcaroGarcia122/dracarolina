@@ -64,12 +64,12 @@ export const AboutModal: React.FC<AboutModalProps> = ({
         {/* Philosophy & Approach */}
         <div className="space-y-5 font-sans text-[#524146] text-sm sm:text-base leading-relaxed text-left">
           <div className="p-4 rounded-2xl bg-[#DFC8C2]/25 border border-[#DFC8C2]/50">
-            <p className="font-serif text-base sm:text-lg text-[#67434B] italic">
+            <p className="font-serif text-lg sm:text-xl text-[#67434B] italic">
               “Cuidar de pessoas é um privilégio. Acredito que todo sintoma conta uma história — e nenhuma intervenção é completa se não começarmos pela escuta atenta de quem você é.”
             </p>
           </div>
 
-          <h4 className="font-serif text-xl text-[#2E2225] pt-1">
+          <h4 className="font-serif text-xl sm:text-2xl text-[#2E2225] pt-1">
             Pilares da Prática Clínica
           </h4>
 
@@ -111,7 +111,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
             </div>
           </div>
 
-          <p className="text-sm">
+          <p className="text-sm sm:text-base leading-relaxed text-[#524146]">
             Na Medicina de Família e Comunidade, o cuidado é centrado na pessoa. Compreendemos que o sofrimento emocional e a saúde mental não se resumem a rótulos — o equilíbrio resulta da harmonia entre corpo, mente, história de vida e relações.
           </p>
 

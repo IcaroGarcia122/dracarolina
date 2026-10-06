@@ -11,7 +11,6 @@ import {
   Compass,
   Moon, 
   Sparkles,
-  Check, 
   ArrowRight, 
   Calendar,
   AlertCircle
@@ -31,11 +30,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Transtornos de ansiedade',
       description:
         'Preocupação excessiva, angústia persistente, crises de pânico, medos incapacitantes ou sensação contínua de tensão física e mental.',
-      bullets: [
-        'Avaliação médica detalhada dos gatilhos e sintomas',
-        'Abordagem integral para alívio do estado de alerta',
-        'Construção de estratégias para resgate da tranquilidade',
-      ],
     },
     {
       num: '02',
@@ -44,11 +38,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Transtornos depressivos',
       description:
         'Tristeza duradoura, perda de interesse ou prazer nas atividades diárias, desânimo, lentificação e sensação de vazio ou cansaço constante.',
-      bullets: [
-        'Olhar atento para a sua história e momento de vida',
-        'Avaliação clínica humanizada, sem pressa ou julgamentos',
-        'Plano terapêutico para recuperação da vitalidade',
-      ],
     },
     {
       num: '03',
@@ -57,11 +46,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Transtorno afetivo bipolar',
       description:
         'Oscilações expressivas de humor, energia e iniciativa, alternando episódios de exaltação ou agitação com períodos de depressão e abatimento.',
-      bullets: [
-        'Acompanhamento médico próximo e longitudinal',
-        'Estabilização criteriosa do humor com foco em segurança',
-        'Atenção à rotina diária, qualidade do sono e bem-estar',
-      ],
     },
     {
       num: '04',
@@ -70,11 +54,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'TDAH',
       description:
         'Desafios contínuos com atenção, foco, desorganização, impulsividade e procrastinação que impactam a rotina profissional, acadêmica ou pessoal.',
-      bullets: [
-        'Investigação funcional do impacto no dia a dia',
-        'Estratégias para gerenciamento de tempo e foco',
-        'Acompanhamento médico individualizado e contínuo',
-      ],
     },
     {
       num: '05',
@@ -83,11 +62,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Transtorno obsessivo-compulsivo (TOC)',
       description:
         'Pensamentos intrusivos e repetitivos associados a rituais ou comportamentos executados na tentativa de aliviar o desconforto ou a angústia.',
-      bullets: [
-        'Compreensão dos ciclos de obsessões e compulsões',
-        'Suporte médico seguro para atenuação do sofrimento',
-        'Acompanhamento integrado para ganho de funcionalidade',
-      ],
     },
     {
       num: '06',
@@ -96,11 +70,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Transtorno de estresse pós-traumático (TEPT)',
       description:
         'Sofrimento psíquico intenso, memórias involuntárias, pesadelos e hipervigilância desencadeados após eventos traumáticos significativos.',
-      bullets: [
-        'Espaço de escuta compassiva e protegida',
-        'Manejo cuidadoso dos sintomas de reexperiência e ansiedade',
-        'Respeito rigoroso ao tempo e aos limites de cada pessoa',
-      ],
     },
     {
       num: '07',
@@ -109,11 +78,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Esquizofrenia e outros transtornos psicóticos',
       description:
         'Alterações na percepção da realidade, pensamento desorganizado, ideias delirantes ou isolamento social que necessitam de estabilização contínua.',
-      bullets: [
-        'Acompanhamento médico contínuo e acolhedor',
-        'Atenção à saúde física e à qualidade de vida do paciente',
-        'Orientação clara e apoio constante aos familiares',
-      ],
     },
     {
       num: '08',
@@ -122,11 +86,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Transtornos alimentares',
       description:
         'Relação conturbada com a comida, distorção da imagem corporal, compulsões ou restrições severas com impacto emocional e clínico.',
-      bullets: [
-        'Avaliação médica considerando mente e corpo',
-        'Compreensão do sofrimento associado à alimentação',
-        'Trabalho em diálogo com nutricionistas e psicólogos',
-      ],
     },
     {
       num: '09',
@@ -137,11 +96,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
         'Acompanhamento médico em saúde mental para adultos no espectro autista, com foco em regulação emocional, qualidade de vida e comorbidades.',
       specialNotice:
         'Realizo acompanhamento médico, porém não realizo avaliação com finalidade de emissão de laudo/relatório diagnóstico de TEA.',
-      bullets: [
-        'Acompanhamento médico com respeito às singularidades',
-        'Manejo de ansiedade, alterações do sono e sobrecargas',
-        'Cuidado acolhedor focado no bem-estar e autonomia',
-      ],
     },
     {
       num: '10',
@@ -150,11 +104,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Alterações do sono',
       description:
         'Insônia inicial, despertares noturnos frequentes, sono não reparador ou sonolência excessiva diurna prejudicando o rendimento.',
-      bullets: [
-        'Análise da rotina biológica e higiene do sono',
-        'Identificação de causas emocionais, clínicas e de hábitos',
-        'Resgate seguro do descanso reparador',
-      ],
     },
     {
       num: '11',
@@ -163,11 +112,6 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
       title: 'Outras demandas em saúde mental',
       description:
         'Dificuldades adaptativas, luto, fases de transição, estresse crônico, esgotamento e sofrimento emocional sem diagnóstico fechado prévio.',
-      bullets: [
-        'Escuta aberta para compreender o que você está vivenciando',
-        'Avaliação médica detalhada e individualizada',
-        'Construção conjunta do caminho terapêutico mais adequado',
-      ],
     },
   ];
 
@@ -197,7 +141,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
           </p>
         </div>
 
-        {/* 11 Cards Grid */}
+        {/* 11 Clean Cards Grid (Sub-informações/bullets removidas conforme solicitado) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {conditions.map((card, idx) => {
             const Icon = card.icon;
@@ -228,33 +172,23 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
                   </h3>
 
                   {/* Description */}
-                  <p className="font-sans text-sm text-[#524146] leading-relaxed mb-4">
+                  <p className="font-sans text-sm sm:text-[14.5px] text-[#524146] leading-relaxed mb-5">
                     {card.description}
                   </p>
 
                   {/* Special Notice (e.g. for TEA as requested) */}
                   {card.specialNotice && (
-                    <div className="mb-4 p-3 rounded-xl bg-[#FAF7F4] border border-[#DFC8C2] text-xs text-[#67434B] flex items-start gap-2 leading-relaxed">
+                    <div className="mb-5 p-3 rounded-xl bg-[#FAF7F4] border border-[#DFC8C2] text-xs text-[#67434B] flex items-start gap-2 leading-relaxed">
                       <AlertCircle className="w-4 h-4 text-[#B87986] shrink-0 mt-0.5" />
                       <span className="font-medium">{card.specialNotice}</span>
                     </div>
                   )}
-
-                  {/* Bullet Points */}
-                  <div className="border-t border-[#DFC8C2]/35 pt-4 mb-6 space-y-2.5">
-                    {card.bullets.map((bullet, bIdx) => (
-                      <div key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-[#67434B]">
-                        <Check className="w-4 h-4 text-[#B87986] shrink-0 mt-0.5" />
-                        <span className="leading-snug">{bullet}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
                 {/* Bottom Action Button */}
                 <button
                   onClick={onOpenBooking}
-                  className="w-full py-2.5 px-4 rounded-xl bg-[#FAF7F4] group-hover:bg-[#B87986] text-[#67434B] group-hover:text-white border border-[#E8DFD9] group-hover:border-[#B87986] text-xs sm:text-sm font-medium transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                  className="w-full mt-2 py-2.5 px-4 rounded-xl bg-[#FAF7F4] group-hover:bg-[#B87986] text-[#67434B] group-hover:text-white border border-[#E8DFD9] group-hover:border-[#B87986] text-xs sm:text-sm font-medium transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
                 >
                   <span>Agendar avaliação</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -308,7 +242,7 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
               </button>
 
               <span className="text-xs text-[#7D6B70]">
-                Consulta online • Atendimento particular
+                Consulta online para adultos • Atendimento particular
               </span>
             </div>
           </div>
