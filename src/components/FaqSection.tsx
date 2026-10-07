@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, AlertCircle } from 'lucide-react';
 
 interface FaqItem {
   question: string;
   answer: string;
+  disclaimer?: string;
   paragraphs?: string[];
 }
 
@@ -20,6 +21,12 @@ export const FaqSection: React.FC = () => {
       question: 'Quem pode ser atendido e onde?',
       answer:
         'O atendimento é voltado para adultos (a partir de 18 anos), realizado por telemedicina para pacientes em todo o Brasil e para brasileiros residentes no exterior. Consultas também estão disponíveis em inglês para pacientes estrangeiros (consultations in English available).',
+    },
+    {
+      question: 'Quais transtornos e condições a Dra. atende?',
+      answer:
+        'Transtorno bipolar / Transtorno de personalidade borderline / Ansiedade / Depressão / Transtorno do pânico / Transtornos por uso de substâncias e dependência química / Transtorno do jogo / Transtornos alimentares / Esquizofrenia / Transtorno do espectro autista (TEA) / TDAH / Distúrbios do sono / Fibromialgia / Outros transtornos da mente.',
+      disclaimer: 'Não realizo laudos para diagnóstico de TEA.',
     },
     {
       question: 'Quanto tempo dura a consulta?',
@@ -102,7 +109,8 @@ export const FaqSection: React.FC = () => {
               frequência.
             </h2>
 
-            <p className="font-sans text-sm sm:text-base text-[#524146] mt-6 leading-relaxed max-w-sm">
+            {/* Intro text justified */}
+            <p className="font-sans text-sm sm:text-base text-[#524146] mt-6 leading-relaxed max-w-sm text-justify hyphens-auto">
               Tire suas principais dúvidas sobre o formato das consultas online para adultos, atendimento no Brasil e no exterior, consultas em inglês e acompanhamento médico.
             </p>
           </div>
@@ -131,15 +139,23 @@ export const FaqSection: React.FC = () => {
                   </button>
 
                   {isOpen && (
-                    <div className="pt-4 pb-2 pr-6 text-sm sm:text-base text-[#524146] font-normal leading-relaxed animate-in fade-in slide-in-from-top-1 duration-200">
+                    <div className="pt-4 pb-2 pr-4 sm:pr-6 text-sm sm:text-base text-[#524146] font-normal leading-relaxed animate-in fade-in slide-in-from-top-1 duration-200">
                       {faq.paragraphs ? (
-                        <div className="space-y-3">
+                        <div className="space-y-3 text-justify hyphens-auto">
                           {faq.paragraphs.map((p, pIdx) => (
                             <p key={pIdx}>{p}</p>
                           ))}
                         </div>
                       ) : (
-                        <p>{faq.answer}</p>
+                        <p className="text-justify hyphens-auto">{faq.answer}</p>
+                      )}
+
+                      {/* Explicit TEA disclaimer if present */}
+                      {faq.disclaimer && (
+                        <div className="mt-3.5 p-3 rounded-xl bg-[#FAF7F4] border border-[#DFC8C2] text-xs sm:text-sm text-[#8C4E5B] font-medium flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4 text-[#B87986] shrink-0" />
+                          <span>{faq.disclaimer}</span>
+                        </div>
                       )}
                     </div>
                   )}

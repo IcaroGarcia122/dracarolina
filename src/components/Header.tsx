@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
 
   const navLinks = [
     { label: 'Saúde Mental', href: '#saude-mental' },
-    { label: 'Sobre', href: '#sobre' },
+    { label: 'Sobre a Dra.', href: '#sobre' },
     { label: 'Atendimento', href: '#atendimento' },
     { label: 'Dúvidas', href: '#duvidas' },
   ];

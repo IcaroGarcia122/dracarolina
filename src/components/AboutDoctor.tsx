@@ -10,7 +10,7 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenAboutModal }) =>
   return (
     <section
       id="sobre"
-      className="relative isolate overflow-hidden min-h-[640px] sm:min-h-[720px] lg:min-h-[840px] flex flex-col justify-end lg:justify-center pt-24 sm:pt-32 lg:pt-0 pb-8 sm:pb-12 lg:pb-0 lg:py-24 bg-[#FAF7F4]"
+      className="relative isolate overflow-hidden min-h-[640px] sm:min-h-[720px] lg:min-h-[820px] flex flex-col justify-end lg:justify-center pt-24 sm:pt-32 lg:pt-0 pb-8 sm:pb-12 lg:pb-0 lg:py-24 bg-[#FAF7F4]"
     >
       {/* Background Image: Doctor clearly framed on the left */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
@@ -44,35 +44,32 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenAboutModal }) =>
             {/* Rose accent bar */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#DFC8C2] via-[#B87986] to-[#67434B]" />
 
-            {/* Small Kicker */}
+            {/* Small Kicker: "Sobre a Dra." */}
             <div className="flex items-center gap-2.5 lg:gap-3 mb-3 lg:mb-4">
               <span className="font-sans text-[11px] lg:text-xs font-semibold tracking-[0.25em] uppercase text-[#B87986]">
-                SOBRE MIM
+                SOBRE A DRA.
               </span>
               <span className="w-8 lg:w-14 h-px bg-[#B87986]/40 inline-block" />
             </div>
 
-            {/* Editorial Title - Generous and prominent */}
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal tracking-tight text-[#221619] leading-[1.15] mb-5 sm:mb-6 text-balance">
+            {/* Editorial Title - balanced size */}
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[38px] font-normal tracking-tight text-[#221619] leading-[1.18] mb-5 sm:mb-6 text-balance">
               A médica por trás da escuta.
             </h2>
 
-            {/* Complete, rich body text - Larger, comfortable and clear */}
-            <div className="space-y-4 font-sans text-base sm:text-[17px] lg:text-[18px] text-[#423337] font-normal leading-[1.75] sm:leading-[1.8]">
+            {/* Updated body copy with refined justification */}
+            <div className="space-y-4 font-sans text-base sm:text-[17px] text-[#423337] font-normal leading-[1.75] sm:leading-[1.8] text-justify hyphens-auto">
               <p>
-                Sou médica, especialista em Medicina de Família e Comunidade (RQE 25.334), com pós-graduação em Psiquiatria e Psicofarmacologia{' '}
+                A Dra. Carolina é médica especialista em Medicina de Família e Comunidade (RQE 25.334), com pós-graduação em Psiquiatria e Psicofarmacologia{' '}
                 <span className="text-xs sm:text-[13px] text-[#7D6B70] tracking-wide uppercase font-medium">
-                  — NÃO ESPECIALISTA
+                  — não especialista
                 </span>.
               </p>
               <p>
-                Minha formação em Medicina de Família e Comunidade contribui para uma abordagem integral da saúde, considerando não apenas os sintomas, mas também a história de vida, a saúde física, o contexto familiar e social, o sono, a rotina e outros fatores que podem repercutir na saúde mental.
+                Sua formação em Medicina de Família e Comunidade contribui para uma abordagem integral da saúde, considerando não apenas os sintomas, mas também a história de vida, a saúde física, o contexto familiar e social, o sono, a rotina e outros fatores que podem repercutir na saúde mental.
               </p>
               <p>
-                Mantenho uma rotina de atualização científica contínua, por meio de estudo permanente e participação regular em congressos, cursos e eventos científicos de referência em psiquiatria, buscando incorporar à prática clínica conhecimentos atuais e condutas fundamentadas nas melhores evidências disponíveis.
-              </p>
-              <p>
-                Meu atendimento é pautado em escuta individualizada, avaliação médica cuidadosa, acompanhamento longitudinal e prática baseada em evidências científicas, respeitando as particularidades e necessidades de cada paciente.
+                A Dra. Carolina mantém uma rotina de atualização científica contínua, por meio de estudo permanente e participação regular em congressos, cursos e eventos científicos. Seu atendimento é pautado em escuta individualizada e humanizada, avaliação médica cuidadosa e acompanhamento que respeita as particularidades e necessidades de cada paciente.
               </p>
             </div>
 

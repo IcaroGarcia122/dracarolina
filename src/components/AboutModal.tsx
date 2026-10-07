@@ -62,7 +62,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({
         </div>
 
         {/* Philosophy & Approach */}
-        <div className="space-y-5 font-sans text-[#524146] text-sm sm:text-base leading-relaxed text-left">
+        <div className="space-y-5 font-sans text-[#524146] text-sm sm:text-base leading-relaxed text-left text-justify hyphens-auto">
           <div className="p-4 rounded-2xl bg-[#DFC8C2]/25 border border-[#DFC8C2]/50">
             <p className="font-serif text-lg sm:text-xl text-[#67434B] italic">
               “Cuidar de pessoas é um privilégio. Acredito que todo sintoma conta uma história — e nenhuma intervenção é completa se não começarmos pela escuta atenta de quem você é.”

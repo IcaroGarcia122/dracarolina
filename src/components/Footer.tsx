@@ -10,7 +10,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ config }) => {
   const navLinks = [
     { label: 'Saúde Mental', href: '#saude-mental' },
-    { label: 'Sobre', href: '#sobre' },
+    { label: 'Sobre a Dra.', href: '#sobre' },
     { label: 'Atendimento', href: '#atendimento' },
     { label: 'Dúvidas', href: '#duvidas' },
   ];
