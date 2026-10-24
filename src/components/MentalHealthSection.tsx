@@ -12,7 +12,8 @@ import {
   ArrowRight, 
   Calendar
 } from 'lucide-react';
-import plantaImg from '../assets/images/planta.png';
+import plantaWebp from '../assets/images/planta.webp';
+import plantaPng from '../assets/images/planta.png';
 
 interface MentalHealthSectionProps {
   onOpenBooking: () => void;
@@ -171,19 +172,27 @@ export const MentalHealthSection: React.FC<MentalHealthSectionProps> = ({ onOpen
 
         {/* Highlight Block in light pink with the plant element in the corner */}
         <div className="mt-12 sm:mt-16 relative rounded-[28px] sm:rounded-[36px] bg-[#DFC8C2]/35 border border-[#DFC8C2]/80 p-8 sm:p-12 lg:p-14 shadow-xs overflow-hidden text-left">
-          {/* Plant Image placed in the corner */}
-          <div className="absolute right-0 top-0 sm:-top-2 bottom-0 w-32 sm:w-44 lg:w-56 pointer-events-none select-none flex items-start justify-end overflow-hidden">
-            <img
-              src={plantaImg}
-              alt="Elemento botânico decorativo"
-              className="h-full max-h-[380px] w-auto object-contain object-top-right opacity-90 transition-transform duration-700 hover:scale-105"
-              onError={(e) => {
-                const target = e.currentTarget;
-                if (target.src !== window.location.origin + '/planta.png') {
-                  target.src = '/planta.png';
-                }
-              }}
-            />
+          {/* Plant Image placed in the corner (purely decorative) */}
+          <div className="absolute right-0 top-0 sm:-top-2 bottom-0 w-32 sm:w-44 lg:w-56 pointer-events-none select-none flex items-start justify-end overflow-hidden" aria-hidden="true">
+            <picture className="h-full max-h-[380px] w-auto">
+              <source srcSet={plantaWebp} type="image/webp" />
+              <img
+                src={plantaPng}
+                alt=""
+                role="presentation"
+                width={236}
+                height={393}
+                loading="lazy"
+                decoding="async"
+                className="h-full max-h-[380px] w-auto object-contain object-top-right opacity-90 transition-transform duration-700 hover:scale-105"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (target.src !== window.location.origin + '/planta.webp' && target.src !== window.location.origin + '/planta.png') {
+                    target.src = '/planta.webp';
+                  }
+                }}
+              />
+            </picture>
           </div>
 
           <div className="relative z-10 max-w-2xl pr-12 sm:pr-24">

@@ -1,0 +1,8 @@
+# Robots.txt - Dra. Carolina Zampronha • Médica em Saúde Mental
+# Website: https://carolinazampronha.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Sitemap Index
+Sitemap: https://carolinazampronha.vercel.app/sitemap.xml

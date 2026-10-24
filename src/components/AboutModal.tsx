@@ -33,7 +33,11 @@ export const AboutModal: React.FC<AboutModalProps> = ({
           <div className="w-24 sm:w-28 h-24 sm:h-28 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-white">
             <img
               src={insetImg}
-              alt="Dra. Carolina Zampronha"
+              alt="Foto de perfil da Dra. Carolina Zampronha"
+              width={112}
+              height={112}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>

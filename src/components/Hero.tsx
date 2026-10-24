@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, ArrowRight, Video, Globe, Languages, ShieldCheck } from 'lucide-react';
-import heroBgImage from '../assets/images/hero-bg.png';
+import heroBgWebp from '../assets/images/hero-bg.webp';
+import heroBgPng from '../assets/images/hero-bg.png';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -10,19 +11,27 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExploreCare }) => {
   return (
     <section className="relative isolate overflow-hidden min-h-[640px] sm:min-h-[720px] lg:min-h-[850px] flex items-center pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-24 bg-[#FAF7F4]">
-      {/* Background Image */}
+      {/* Background Image: Optimized for LCP and visual stability */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <img
-          src={heroBgImage}
-          alt="Dra. Carolina Zampronha"
-          className="w-full h-full object-cover object-[82%_8%] sm:object-[80%_8%] lg:object-[78%_6%] opacity-95 transition-all duration-300"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (target.src !== window.location.origin + '/hero-bg.png') {
-              target.src = '/hero-bg.png';
-            }
-          }}
-        />
+        <picture className="w-full h-full block">
+          <source srcSet={heroBgWebp} type="image/webp" />
+          <img
+            src={heroBgPng}
+            alt="Dra. Carolina Zampronha - Atendimento médico em saúde mental por telemedicina"
+            width={1672}
+            height={941}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className="w-full h-full object-cover object-[82%_8%] sm:object-[80%_8%] lg:object-[78%_6%] opacity-95 transition-all duration-300"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src !== window.location.origin + '/hero-bg.webp' && target.src !== window.location.origin + '/hero-bg.png') {
+                target.src = '/hero-bg.webp';
+              }
+            }}
+          />
+        </picture>
         {/* Soft left gradient */}
         <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-[#FAF7F4]/95 via-[#FAF7F4]/60 to-transparent sm:via-[#FAF7F4]/30 lg:w-3/5 pointer-events-none" />
       </div>

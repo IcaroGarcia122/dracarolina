@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Globe, Languages, Instagram, MessageCircle } from 'lucide-react';
-import aboutBgImage from '../assets/images/about-bg.png';
+import aboutBgWebp from '../assets/images/about-bg.webp';
+import aboutBgPng from '../assets/images/about-bg.png';
 
 interface AboutDoctorProps {
   onOpenAboutModal: () => void;
@@ -14,17 +15,24 @@ export const AboutDoctor: React.FC<AboutDoctorProps> = ({ onOpenAboutModal }) =>
     >
       {/* Background Image: Doctor clearly framed on the left */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <img
-          src={aboutBgImage}
-          alt="Dra. Carolina Zampronha"
-          className="w-full h-full object-cover object-[20%_20%] sm:object-[22%_20%] lg:object-[18%_25%] opacity-55 sm:opacity-60 lg:opacity-100 transition-all duration-300"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (target.src !== window.location.origin + '/about-bg.png') {
-              target.src = '/about-bg.png';
-            }
-          }}
-        />
+        <picture className="w-full h-full block">
+          <source srcSet={aboutBgWebp} type="image/webp" />
+          <img
+            src={aboutBgPng}
+            alt="Dra. Carolina Zampronha Correia - Médica especialista em Medicina de Família e Comunidade"
+            width={1672}
+            height={941}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover object-[20%_20%] sm:object-[22%_20%] lg:object-[18%_25%] opacity-55 sm:opacity-60 lg:opacity-100 transition-all duration-300"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src !== window.location.origin + '/about-bg.webp' && target.src !== window.location.origin + '/about-bg.png') {
+                target.src = '/about-bg.webp';
+              }
+            }}
+          />
+        </picture>
 
         {/* Mobile: soft bottom vignette */}
         <div className="lg:hidden absolute inset-0 bg-gradient-to-t from-[#FAF7F4] via-[#FAF7F4]/40 to-transparent pointer-events-none" />
